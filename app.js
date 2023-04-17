@@ -1,9 +1,8 @@
 const express = require("express");
 const app = express();
 const { list, find } = require("./postBank");
-const morgan = require("morgan");
 
-app.use(morgan("dev"));
+app.use(express.static("public"));
 
 app.get("/", (req, res) => {
   const posts = list();
@@ -24,7 +23,6 @@ app.get("/", (req, res) => {
     </ul>
   </body>
 </html>`);
-res.send(html);
 });
 
 const PORT = 1337;
